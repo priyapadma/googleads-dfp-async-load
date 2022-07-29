@@ -1,0 +1,389 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Google Ads DFP - Async Load Example</title>
+    <script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
+    <script>
+      window.googletag = window.googletag || {cmd: []};
+	  
+	  var adType,i,gptAdtype,gptPosition,gptNetwork,gptSizeMap, slotName, slotDiv;
+	  ii = 0;
+
+	var network = '6355419';
+	var subSec = 'Travel'; //need to change based on the sub-section
+
+	var adSlotArr = [
+		 {
+			'name' : 'MasterAd_ATF',
+			'breakpoints' : [[481,0],[0, 480],[0, 0]],
+			'primarySlot' : [1350, 530],
+			'slotSize' :  [[1350, 530],[320,150],[1350,530]],
+			'sizeMap' : [
+			  [
+				[481, 0],
+				[1350, 530]
+			  ],
+			  [
+				[0, 480],
+				[320, 150]
+			  ],
+			  [
+				[0, 0],
+				[1350, 530]
+			  ]
+			]
+		 },
+		 {
+			'name' : 'Leaderboard_ATF',
+			'breakpoints' : [[481, 0],[0,480],[0,0]],
+			'primarySlot' : [[970, 250],[970,90],[728,90]],
+			'slotSize' : [[[970, 250],[970,90],[728,90]], [[320,150],[320,50]], [[970, 250],[970,90],[728,90]]],
+			'sizeMap' : [
+			  [
+				[481, 0],
+				[[970, 250],[970,90],[728,90]]
+			  ],
+			  [
+				[0, 480],
+				[[320,150],[320,50]]
+			  ],
+			  [
+				[0, 0],
+				[[970, 250],[970,90],[728,90]]
+			  ]
+			]
+		 },
+		 {
+			'name' : 'HalfPage_ATF',
+			'breakpoints' : [[481,0],[0, 480],[0, 0]],
+			'primarySlot' : [300, 600],
+			'slotSize' :  [[300, 600],[300,600],[300,600]],
+			'sizeMap' : [
+			  [
+				[481, 0],
+				[300, 600]
+			  ],
+			  [
+				[0, 480],
+				[300, 600]
+			  ],
+			  [
+				[0, 0],
+				[300, 600]
+			  ]
+			]
+		 },
+		 {
+			'name' : 'MPU_MID',
+			'breakpoints' : [[481,0],[0, 480],[0, 0]],
+			'primarySlot' : [300, 250],
+			'slotSize' :  [[300, 250],[300,250],[300,250]],
+			'sizeMap' : [
+			  [
+				[481, 0],
+				[300, 250]
+			  ],
+			  [
+				[0, 480],
+				[300, 250]
+			  ],
+			  [
+				[0, 0],
+				[300, 250]
+			  ]
+			]
+		 },
+		 {
+			'name' : 'Native',
+			'breakpoints' : [[481,0],[0, 480],[0, 0]],
+			'primarySlot' : ['fluid'],
+			'slotSize' :  [['fluid'],['fluid'],['fluid']],
+			'sizeMap' : [
+			  [
+				[481, 0],
+				'fluid'
+			  ],
+			  [
+				[0, 480],
+				'fluid'
+			  ],
+			  [
+				[0, 0],
+				'fluid'
+			  ]
+			]
+		 },
+		 {
+			'name' : 'InArticle_Leaderboard',
+			'breakpoints' : [[481,0],[0, 480],[0, 0]],
+			'primarySlot' : [[970,250],[970,90],[728,90]],
+			'slotSize' :  [[[970,250],[970,90],[728,90]],[],[[970,250],[970,90],[728,90]]],
+			'sizeMap' : [
+			  [
+				[481, 0],
+				[[970,250],[970,90],[728,90]]
+			  ],
+			  [
+				[0, 480],
+				[]
+			  ],
+			  [
+				[0, 0],
+				[[970,250],[970,90],[728,90]]
+			  ]
+			]
+		 },
+		 {
+			'name' : 'InArticle_MPU',
+			'breakpoints' : [[481,0],[0, 480],[0, 0]],
+			'primarySlot' : [300, 250],
+			'slotSize' :  [[],[300,250],[]],
+			'sizeMap' : [
+			  [
+				[481, 0],
+				[]
+			  ],
+			  [
+				[0, 480],
+				[300,250]
+			  ],
+			  [
+				[0, 0],
+				[]
+			  ]
+			]
+		 },
+		 {
+			'name' : 'Reskin',
+			'breakpoints' : [[481,0],[0, 480],[0, 0]],
+			'primarySlot' : [1, 1],
+			'slotSize' :  [[1,1],[1,1],[1,1]],
+			'sizeMap' : [
+			  [
+				[481, 0],
+				[1,1]
+			  ],
+			  [
+				[0, 480],
+				[1,1]
+			  ],
+			  [
+				[0, 0],
+				[1,1]
+			  ]
+			]
+		 },
+		 {
+			'name' : 'RichMedia',
+			'breakpoints' : [[481,0],[0, 480],[0, 0]],
+			'primarySlot' : [2, 2],
+			'slotSize' :  [[2,2],[2,2],[2,2]],
+			'sizeMap' : [
+			  [
+				[481, 0],
+				[2,2]
+			  ],
+			  [
+				[0, 480],
+				[2,2]
+			  ],
+			  [
+				[0, 0],
+				[2,2]
+			  ]
+			]
+		 },
+		 {
+			'name' : 'InArticle_Video',
+			'breakpoints' : [[481,0],[0, 480],[0, 0]],
+			'slotSize' :  [[[1,1],[640,480]],[[1,1],[640,480]],[[1,1],[640,480]]],
+			'primarySlot' : [[1,1],[640,480]],
+			'sizeMap' : [
+			  [
+				[481, 0],
+				[[1,1],[640,480]]
+			  ],
+			  [
+				[0, 480],
+				[[1,1],[640,480]]
+			  ],
+			  [
+				[0, 0],
+				[[1,1],[640,480]]
+			  ]
+			]
+		 }
+	 ];
+
+	  //Method to load All Ads in Asyn manner
+	  function loadAllAds(allAdsArr) {
+		console.log("----allAdsArr---"+JSON.stringify(allAdsArr));
+		 googletag.cmd.push(function() {
+		  for (var a = 0; a < allAdsArr.length; a++) {
+				console.log("-----------gptNetwork-"+a+"-------------"+allAdsArr[a].gptNetwork);
+				console.log("-----------sizeMap-"+a+"-------------"+allAdsArr[a].sizeMap);
+				console.log("-----------primarySlot-"+a+"-------------"+allAdsArr[a].primarySlot);
+				console.log("-----------slotName-"+a+"-------------"+allAdsArr[a].slotName);
+				googletag.defineSlot(allAdsArr[a].gptNetwork, allAdsArr[a].primarySlot, allAdsArr[a].slotName).defineSizeMapping(allAdsArr[a].sizeMap).addService(googletag.pubads());
+			}
+			googletag.pubads().enableLazyLoad();
+			googletag.pubads().enableLazyLoad({
+				fetchMarginPercent: 0,  // 
+				renderMarginPercent: 0,  // 
+				mobileScaling: 0.0  // 
+			  });
+			googletag.enableServices();
+			
+			googletag.pubads().addEventListener('slotRenderEnded', function(event) {
+				console.log("*************"+event.slot.getSlotElementId());
+				var elem = document.getElementById(event.slot.getSlotElementId());
+				elem.className = 'activated';
+			});
+		  
+		  });
+	  }
+	  
+	  //Method to generate google ads array with the specified slot details
+	  function defineAdSlots() {
+		var googleAdsList = document.querySelectorAll('.ad-slot');
+		console.log("---googleAdsList----"+googleAdsList.length);
+		var allAdsObj = {};
+		var allAdsArr = [];
+		for (var i = 0; i < googleAdsList.length; i++) {
+			if (googleAdsList[i].children.length===0 || googleAdsList[i].children.length===1) {
+				gptAdtype = googleAdsList[i].dataset.adtype;
+				ii++;
+				for (var j = 0; j < adSlotArr.length; j++) {
+					if(adSlotArr[j].name == gptAdtype) {
+						slotName = generateNextSlotName();
+						gptNetwork = '/'+network+'/'+subSec+'/'+subSec+'_'+gptAdtype;
+						allAdsObj = {};
+						allAdsObj.gptNetwork = gptNetwork;
+						allAdsObj.sizeMap = adSlotArr[j].sizeMap;
+						allAdsObj.primarySlot = adSlotArr[j].primarySlot;
+						allAdsObj.slotName = slotName;
+						allAdsObj.gptAdtype = gptAdtype;
+						allAdsArr.push(allAdsObj);
+					}
+				}
+			}
+		}
+		
+		loadAllAds(allAdsArr);
+	}
+	
+	var nextSlotId = 1;
+	function generateNextSlotName() {
+		var id = nextSlotId++;
+		return 'adBannerSlot-' + id;
+	}
+
+	window.onload = function(e) {
+		defineAdSlots();
+	}
+    </script>
+    <style>
+      div.ad-slot {
+        border: 5px solid red !important;
+        display: block;
+        margin: auto;
+      }
+	  div.activated {
+		border: 5px solid green !important;
+	  }
+    </style>
+  </head>
+  <body>
+    <div class="main-content">
+	  <h2>MasterAd_ATF</h2>
+      <div id="adBannerSlot-1" class="ad-slot" data-adtype="MasterAd_ATF" style="width:1350px;height:530px;">
+        <script>
+			setTimeout(function() {
+				googletag.cmd.push(function() { googletag.display('adBannerSlot-1'); });
+			},1000);
+        </script>
+      </div>
+
+      <!-- 3 viewport tall div to place next slot 3 viewports away. -->
+      <div style="height:200vh"></div>
+	  <h2>Leaderboard_ATF</h2>
+      <div id="adBannerSlot-2" class="ad-slot" data-adtype="Leaderboard_ATF" style="width:970px; height:250px;">
+        <script>
+			setTimeout(function() {
+				googletag.cmd.push(function() { googletag.display('adBannerSlot-2'); });
+			},1000);
+        </script>
+      </div>
+
+      <!-- 9 viewport tall div to place next slot 12 viewports away. -->
+      <div style="height:200vh"></div>
+	  <h2>HalfPage_ATF</h2>
+      <div id="adBannerSlot-3" class="ad-slot" data-adtype="HalfPage_ATF" style="width:300px; height:600px;">
+        <script>
+			setTimeout(function() {
+				googletag.cmd.push(function() { googletag.display('adBannerSlot-3'); });
+			},1000);
+        </script>
+      </div>
+	   <div style="height:200vh"></div>
+	   <h2>MPU_MID</h2>
+	   <div id="adBannerSlot-4" class="ad-slot" data-adtype="MPU_MID" style="width:300px; height:250px;">
+        <script>
+			setTimeout(function() {
+				googletag.cmd.push(function() { googletag.display('adBannerSlot-4'); });
+			},1000);
+        </script>
+      </div>
+	   <div style="height:200vh"></div>
+	   <h2>Native</h2>
+	   <div id="adBannerSlot-5" class="ad-slot" data-adtype="Native" style="width:300px; height:250px;">
+        <script>
+			setTimeout(function() {
+				googletag.cmd.push(function() { googletag.display('adBannerSlot-5'); });
+			},1000);
+        </script>
+      </div>
+	   <div style="height:200vh"></div>
+	   <h2>InArticle_Leaderboard</h2>
+	   <div id="adBannerSlot-6" class="ad-slot" data-adtype="InArticle_Leaderboard" style="width:970px; height:250px;">
+        <script>
+			setTimeout(function() {
+				googletag.cmd.push(function() { googletag.display('adBannerSlot-6'); });
+			},1000);
+        </script>
+      </div>
+	   <div style="height:200vh"></div>
+	   <h2>InArticle_MPU</h2>
+	   <div id="adBannerSlot-7" class="ad-slot" data-adtype="InArticle_MPU" style="width:300px; height:250px;">
+        <script>
+			setTimeout(function() {
+				googletag.cmd.push(function() { googletag.display('adBannerSlot-7'); });
+			},1000);
+        </script>
+      </div>
+	   <div style="height:200vh"></div>
+	   <h2>Reskin</h2>
+	   <div id="adBannerSlot-8" class="ad-slot" data-adtype="Reskin" style="width:1px; height:1px;">
+        <script>
+          googletag.cmd.push(function() { googletag.display('adBannerSlot-8'); });
+        </script>
+      </div>
+	   <div style="height:200vh"></div>
+	   <h2>InArticle_Video</h2>
+	  <div id="adBannerSlot-9" class="ad-slot" data-adtype="InArticle_Video" style="width:640px; height:480px;">
+        <script>
+          googletag.cmd.push(function() { googletag.display('adBannerSlot-9'); });
+        </script>
+      </div>
+	   <div style="height:200vh"></div>
+	   <h2>RichMedia</h2>
+	  <div id="adBannerSlot-10" class="ad-slot" data-adtype="RichMedia" style="width:2px; height:2px;">
+        <script>
+          googletag.cmd.push(function() { googletag.display('adBannerSlot-10'); });
+        </script>
+      </div>
+    </div>
+  </body>
+</html>
